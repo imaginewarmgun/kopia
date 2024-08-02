@@ -1,0 +1,32 @@
+services:
+  kopia:
+    image: kopia/kopia:latest
+    env_file:
+      - .env
+    hostname: ${HOSTNAME}
+    container_name: Kopia
+    restart: unless-stopped
+    ports:
+      - 51515:51515
+    command:
+      - server
+      - start
+      - --tls-cert-file=/vault/${REPO_NAME}.cert
+      - --tls-key-file=/vault/${REPO_NAME}.key
+      - --address=0.0.0.0:51515
+      - --server-control-username=kopia
+    volumes:
+      # Mount local folders needed by kopia
+      - ./config:/app/config
+      - ./cache:/app/cache
+      - ./logs:/app/logs
+      # Mount cert and key files
+      - ${VAULT_PATH}/${REPO_NAME}.cert:/vault/${REPO_NAME}.cert
+      - ${VAULT_PATH}/${REPO_NAME}.key:/vault/${REPO_NAME}.key
+      # Mount repository location
+      - ${REPO_PATH}:/repository
+      # Mount path for browsing mounted snaphots
+      # - /path/to/tmp/dir:/tmp:shared
+      # Mount local folders to snapshot
+      - ${TARGET_LOCATION_1}:/data/${TARGET_LABEL_1}:ro
+      - ${TARGET_LOCATION_2}:/data/${TARGET_LABEL_2}:ro
