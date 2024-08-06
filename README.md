@@ -1,6 +1,6 @@
 ## Notes
 - This configuration is intended for WSL2.
-- [Docker desktop does not support bind propagation](https://docs.docker.com/storage/bind-mounts/#configure-bind-propagation), so this setting does not mount path for browsing mounted snapshot.
+- [Docker Desktop does not support bind propagation](https://docs.docker.com/storage/bind-mounts/#configure-bind-propagation), so this setting does not mount path for browsing mounted snapshot.
 - You can adjust bind mount and `.env` file if:
   - you are not using local or network-attached repository.
   - you need to add or remove backup locations.
