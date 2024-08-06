@@ -1,6 +1,7 @@
 services:
   kopia:
-    image: kopia/kopia:latest
+    build:
+      context: .
     env_file:
       - .env
     hostname: ${HOSTNAME}
