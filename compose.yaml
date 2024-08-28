@@ -30,5 +30,5 @@ services:
       # Mount path for browsing mounted snaphots
       # - /path/to/tmp/dir:/tmp:shared
       # Mount local folders to snapshot
-      - ${TARGET_LOCATION_1}:/data/${TARGET_LABEL_1}:ro
-      - ${TARGET_LOCATION_2}:/data/${TARGET_LABEL_2}:ro
+      # - ${TARGET_LOCATION_1}:/data/${TARGET_LABEL_1}:ro
+      # - ${TARGET_LOCATION_2}:/data/${TARGET_LABEL_2}:ro

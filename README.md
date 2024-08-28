@@ -5,10 +5,6 @@
   - you are not using local or network-attached repository.
   - you need to add or remove backup locations.
 
-## Issues
-- Cannot log in to Web UI using username other than server control username.
-- Web UI is accessible only when server control username is 'kopia'.
-
 ## Instruction
 Before running Kopia repository server, you should create TLS certificate and key. If you have a certificate from CA, you can pass this step and move cert and key to `${VAULT_PATH}/${REPO_NAME}.cert` and `${VAULT_PATH}/${REPO_NAME}.key` (See below for env meaning).
 ```
