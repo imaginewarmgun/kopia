@@ -21,6 +21,8 @@ You should duplicate `.env.sample` and rename the copy to `.env`. Then, adjust t
 - `VAULT_PATH`: Path of a directory that has cert and key files in it
 - `REPO_NAME`: Used to name cert and key files
 
+If the file permissions for the bind mount on the host differ from those required by the container, adjust them accordingly.
+
 To run Kopia repository server:
 ```
 docker compose up

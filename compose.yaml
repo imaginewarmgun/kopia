@@ -6,6 +6,7 @@ services:
       - .env
     hostname: ${HOSTNAME}
     container_name: Kopia
+    user: 999:999
     restart: unless-stopped
     ports:
       - 51515:51515

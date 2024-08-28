@@ -7,3 +7,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/* /var/lib/cache/* /var/lib/log/* \
     /var/tmp/* /usr/share/doc/ /usr/share/man/ /usr/share/locale/ \
     /root/.cache /root/.local /root/.gnupg /root/.config /tmp/* 
+
+RUN groupadd -r kopia && useradd -r -g kopia kopia 
+
+USER kopia
