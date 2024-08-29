@@ -2,7 +2,6 @@
 - This configuration is intended for WSL2.
 - This configuration sets the container's non-root user to match the user on the host.
 - [Docker Desktop does not support bind propagation](https://docs.docker.com/storage/bind-mounts/#configure-bind-propagation), so this setting does not mount path for browsing mounted snapshot.
-- The blank directories `cache`, `config`, `logs` are not included in `.gitignore` because they are owned by root if created by Docker Compose. This results in a situation where non-root user in container cannot write to the bind mounts.
 - You can adjust bind mount and `.env` file if:
   - you are not using local or network-attached repository.
   - you need to add or remove backup locations.
@@ -20,6 +19,8 @@ You should duplicate `.env.sample` and rename the copy to `.env`. Then, adjust t
 - `KOPIA_SERVER_CONTROL_PASSWORD`: Password for the user primarily managing KopiaUI
 - `VAULT_PATH`: Path of a directory that has cert and key files in it
 - `REPO_NAME`: Used to name cert and key files
+
+The empty directories `cache`, `config`, and `logs` should be created in the same directory as `compose.yaml`. If you skip this step, Docker Compose will create the directories with root ownership, which can prevent non-root users in the container from writing to the bind mounts.
 
 To run Kopia repository server:
 ```
