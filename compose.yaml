@@ -2,11 +2,16 @@ services:
   kopia:
     build:
       context: .
+      args:
+        USER_ID: ${USER_ID}
+        GROUP_ID: ${GROUP_ID}
+        USER_NAME: ${USER_NAME}
+        GROUP_NAME: ${GROUP_NAME}
     env_file:
       - .env
     hostname: ${HOSTNAME}
     container_name: Kopia
-    user: 999:999
+    user: ${USER_ID}:${GROUP_ID}
     restart: unless-stopped
     ports:
       - 51515:51515
@@ -16,7 +21,7 @@ services:
       - --tls-cert-file=/vault/${REPO_NAME}.cert
       - --tls-key-file=/vault/${REPO_NAME}.key
       - --address=0.0.0.0:51515
-      - --server-control-username=kopia
+      - --server-control-username=server-control
     volumes:
       # Mount local folders needed by kopia
       - ./config:/app/config
